@@ -200,6 +200,8 @@ class StoreSwitchModel implements ArgumentInterface
      */
     public function getStoreCountyCode(StoreInterface $store): string
     {
+        $storeLocale = $this->getStoreLocale($store);
+        if ($storeLocale == 'en_GB') return 'INT';
         return $this->scopeConfig->getValue(self::DEFAULT_COUNTRY_CONFIG_PATH, ScopeInterface::SCOPE_STORE,
             $store->getId());
     }
